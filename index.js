@@ -37,7 +37,7 @@ const corsOptions={
 app.use(cors());
 
 // puerto de la app
-const port = process.env.port;
+const port = process.env.REACT_APP_BACKEND_URL;
 /* const port = process.env.REACT_APP_BACKEND_URL || 4000; */
 
 
