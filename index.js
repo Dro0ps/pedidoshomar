@@ -9,12 +9,31 @@ const app = express();
 // Conectar a la base de datos
 conectarDB();
 
-// habilitar cors
-app.use(cors());
+
 
 // Habilitar express.json
 app.use( express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
+
+// hABILITAR cORS
+/* const whitelist = ['http://localhost:3000']; */
+const whitelist = [process.env.FRONTEND_URL];
+const corsOptions={
+    origin: (origin, callback) => {
+        console.log('origin');
+        // Revisar si la petición viene de un servidor que esta en la lista blanca
+        const existe = whitelist.some( dominio => dominio === origin);
+        if(existe) {
+            callback(null, true);
+        } else {
+            callback(new Error('No permitido por Cors'))
+        }
+
+    }
+}
+
+// habilitar cors
+app.use(cors(corsOptions));
 
 // puerto de la app
 const port = process.env.port || 4000;
