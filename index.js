@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 const whitelist = ['http://localhost:3000'];
 /* const whitelist = [process.env.FRONTEND_URL]; */
 const corsOptions={
-    origin: (origin, callback) => {
+    /* origin: (origin, callback) => {
         console.log('origin');
         // Revisar si la petición viene de un servidor que esta en la lista blanca
         const existe = whitelist.some( dominio => dominio === origin);
@@ -29,12 +29,15 @@ const corsOptions={
             callback(new Error('No permitido por Cors'))
         }
 
-    }
+    } */
+
+    origin: process.env.FRONTEND_URL,
+    methods: "GET, PUT, POST, DELETE, OPTIONS"
 }
 
 // habilitar cors
 /* app.use(cors(corsOptions)); */
-app.use(cors());
+app.use(cors(corsOptions));
 
 // puerto de la app
 /* const port = process.env.REACT_APP_BACKEND_URL; */
