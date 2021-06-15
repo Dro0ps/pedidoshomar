@@ -32,7 +32,7 @@ const corsOptions={
 
     } */
 
-    origin: [process.env.FRONTEND_URL],
+    origin: 'dreamy-wilson-162426.netlify.app',
     /* methods: "GET, PUT, POST, DELETE, OPTIONS" */
 }
 
@@ -59,6 +59,6 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 // arrancar la app
 app.listen(port, '0.0.0.0', () => {
     console.log(`El servidor esta funcionando en el puerto ${port}`);
-    console.log(FRONTEND_URL);
+    
 });
 
