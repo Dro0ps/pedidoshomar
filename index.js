@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // hABILITAR cORS
 /* const whitelist = ['http://localhost:3000']; */
-const whitelist = [process.env.FRONTEND_URL];
+/* const whitelist = [process.env.FRONTEND_URL];
 const corsOptions={
     origin: (origin, callback) => {
         console.log('origin');
@@ -30,13 +30,14 @@ const corsOptions={
         }
 
     }
-}
+} */
 
 // habilitar cors
-app.use(cors(corsOptions));
+/* app.use(cors(corsOptions)); */
+app.use(cors());
 
 // puerto de la app
-const port = process.env.port || 4000;
+const port = process.env.REACT_APP_BACKEND_URL || 4000;
 
 
 
