@@ -16,8 +16,8 @@ app.use( express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
 // hABILITAR cORS
-/* const whitelist = ['http://localhost:3000']; */
-/* const whitelist = [process.env.FRONTEND_URL];
+const whitelist = ['http://localhost:3000'];
+/* const whitelist = [process.env.FRONTEND_URL]; */
 const corsOptions={
     origin: (origin, callback) => {
         console.log('origin');
@@ -30,15 +30,28 @@ const corsOptions={
         }
 
     }
-} */
+}
 
 // habilitar cors
 /* app.use(cors(corsOptions)); */
 app.use(cors());
 
 // puerto de la app
-const port = process.env.REACT_APP_BACKEND_URL;
-/* const port = process.env.REACT_APP_BACKEND_URL || 4000; */
+/* const port = process.env.REACT_APP_BACKEND_URL; */
+const port = process.env.REACT_APP_BACKEND_URL || 4000;
+
+
+
+///// Insertado
+// Configurar cabeceras y cors
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
+
 
 
 
