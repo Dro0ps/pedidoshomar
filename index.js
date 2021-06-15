@@ -2,6 +2,7 @@ const express = require('express');
 const conectarDB = require('./config/db');
 const cors = require('cors');
 const path = require('path');
+const { Console } = require('console');
 
 // crear el servidor
 const app = express();
@@ -31,8 +32,8 @@ const corsOptions={
 
     } */
 
-    origin: process.env.FRONTEND_URL,
-    methods: "GET, PUT, POST, DELETE, OPTIONS"
+    origin: [process.env.FRONTEND_URL],
+    /* methods: "GET, PUT, POST, DELETE, OPTIONS" */
 }
 
 // habilitar cors
@@ -54,7 +55,10 @@ app.use(express.static('uploads'));
 // función middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'uploads')));
 
+
 // arrancar la app
 app.listen(port, '0.0.0.0', () => {
     console.log(`El servidor esta funcionando en el puerto ${port}`);
+    console.log(FRONTEND_URL);
 });
+
