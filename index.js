@@ -44,20 +44,6 @@ app.use(cors(corsOptions));
 const port = process.env.REACT_APP_BACKEND_URL || 4000;
 
 
-
-///// Insertado
-// Configurar cabeceras y cors
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-});
-
-
-
-
 // Importar rutas
 app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));
