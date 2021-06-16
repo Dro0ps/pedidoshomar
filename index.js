@@ -16,29 +16,22 @@ conectarDB();
 app.use( express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
-// hABILITAR cORS
-const whitelist = ['http://localhost:3000'];
-/* const whitelist = [process.env.FRONTEND_URL]; */
-const corsOptions={
-    /* origin: (origin, callback) => {
-        console.log('origin');
-        // Revisar si la petición viene de un servidor que esta en la lista blanca
-        const existe = whitelist.some( dominio => dominio === origin);
-        if(existe) {
-            callback(null, true);
-        } else {
-            callback(new Error('No permitido por Cors'))
-        }
 
-    } */
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+    next();
+  });
 
-    origin: 'dreamy-wilson-162426.netlify.app',
-    /* methods: "GET, PUT, POST, DELETE, OPTIONS" */
-}
+
+
+
 
 // habilitar cors
 /* app.use(cors(corsOptions)); */
-app.use(cors(corsOptions));
+app.use(cors());
 
 // puerto de la app
 /* const port = process.env.REACT_APP_BACKEND_URL; */
