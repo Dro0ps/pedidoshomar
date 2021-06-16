@@ -43,9 +43,9 @@ app.use('/api/pedidos', require('./routes/pedidos'));
 app.use('/api/tareas', require('./routes/tareas'));
 app.use(express.static('uploads'));
 
-/* // función middleware para servir archivos estáticos
+// función middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'uploads')));
- */
+
 
 // arrancar la app
 app.listen(port, '0.0.0.0', () => {
