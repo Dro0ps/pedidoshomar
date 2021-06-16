@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
 
 // habilitar cors
 /* app.use(cors(corsOptions)); */
-app.use(cors());
+/* app.use(cors()); */
 
 // puerto de la app
 /* const port = process.env.REACT_APP_BACKEND_URL; */
