@@ -13,7 +13,7 @@ router.post('/',
 
 // Obtiene el usuario autenticado
 router.get('/',
-    /* auth, */
+    auth,
     authController.usuarioAutenticado
 );
 module.exports = router;
