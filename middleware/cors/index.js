@@ -1,7 +1,7 @@
 const cors = require ('cors');
 
 const corsOption = {
-    origin: '*',
+    origin: ['*', 'https://hardcore-newton-f6704f.netlify.app'],
     optionsSuccessStatus: 200
 };
 
