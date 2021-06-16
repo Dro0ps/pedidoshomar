@@ -2,10 +2,10 @@ const express = require('express');
 const conectarDB = require('./config/db');
 const corsMiddleware = require('./middleware/cors/index');
 
-const cors = require('cors');
+
 const path = require('path');
 
-const { Console } = require('console');
+
 
 // crear el servidor
 const app = express();
