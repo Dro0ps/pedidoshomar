@@ -1,6 +1,7 @@
 const express = require('express');
 const conectarDB = require('./config/db');
 const corsMiddleware = require('./middleware/cors/index');
+const cors = require("cors");
 
 
 
@@ -11,8 +12,10 @@ const path = require('path');
 // crear el servidor
 const app = express();
 
-app.options('*', corsMiddleware);
-app.use(corsMiddleware);
+app.use(cors());
+
+/* app.options('*', corsMiddleware);
+app.use(corsMiddleware); */
 
 /* app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", '*');
