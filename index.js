@@ -12,31 +12,16 @@ const app = express();
 
 app.options('*', corsMiddleware);
 app.use(corsMiddleware);
-/* 
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", '*');
   res.header("Access-Control-Allow-Credentials", true);
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
   next();
-}); */
+});
 
-// Configurar cabeceras y cors
 
-app.use((req, res, next) => {
-
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header("Access-Control-Allow-Credentials", true);
-  
-  res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-  
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-  
-  res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-  
-  next();
-  
-  });
 
 // Conectar a la base de datos
 conectarDB();
