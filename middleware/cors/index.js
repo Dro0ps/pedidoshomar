@@ -1,6 +1,7 @@
 const cors = require ('cors');
 
 const corsOption = {
+    /* origin: ['https://localhost:4000/'], */
     origin: ['https://hardcore-newton-f6704f.netlify.app/'],
     optionsSuccessStatus: 200
 };
