@@ -30,7 +30,7 @@ conectarDB();
 
 // Habilitar express.json
 app.use( express.json({ extended: true }));
-/* app.use(express.urlencoded({ extended: true })); */
+app.use(express.urlencoded({ extended: true }));
 
 
 
