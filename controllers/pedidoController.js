@@ -47,7 +47,7 @@ exports.crearPedido = async (req, res) => {
         // Guardar el creador via JWT
         pedido.creador = req.usuario.id;
 
-        // Leer la archivo
+        // Leer el nombre del archivo
         pedido.archivo = req.file.filename;
 
         // guardamos el pedido
@@ -63,7 +63,7 @@ exports.crearPedido = async (req, res) => {
 // Obtiene todos los pedidos del usuario actual
 exports.obtenerPedidos = async (req, res) => {
     try {
-        const pedidos = await Pedido.find(/* { creador: req.usuario.id } */).sort({ creado: -1 });
+        const pedidos = await Pedido.find(/* { creador: req.usuario.id }).sort({ creado: -1 } */);
         res.json({ pedidos });
     } catch (error) {
         console.log(error);
