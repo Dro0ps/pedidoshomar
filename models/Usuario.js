@@ -6,6 +6,11 @@ const UsuariosSchema = mongoose.Schema({
         required: true,
         trim: true
     },
+    tipo: {
+        type: String,
+        required: true,
+        trim: true
+    },
     email: {
         type: String,
         required: true,
@@ -13,11 +18,6 @@ const UsuariosSchema = mongoose.Schema({
         unique: true
     },
     password: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    tipo_usuario:{
         type: String,
         required: true,
         trim: true

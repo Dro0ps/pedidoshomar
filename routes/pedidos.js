@@ -9,10 +9,9 @@ const { check } = require('express-validator');
 // api/pedidos
 router.post('/', 
     auth,
-    /* [
+    [
         check('num_pedido', 'El numero del pedido es obligatoio').not().isEmpty()
-    ], */
-    pedidoController.subirArchivo,
+    ],
     pedidoController.crearPedido
 );
 
@@ -25,7 +24,9 @@ router.get('/',
 // Actualizar pedido via ID
 router.put('/:id', 
     auth,
-    
+    [
+        check('num_pedido', 'El numero del pedido es obligatoio').not().isEmpty()
+    ],
     pedidoController.actualizarPedido
 );
 

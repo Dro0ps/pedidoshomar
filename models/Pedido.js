@@ -3,17 +3,18 @@ const mongoose = require('mongoose');
 const PedidoSchema = mongoose.Schema({
     num_pedido: {
         type: String,
-        required: false,
-        trim: true
+        required: true,
+        trim: true,
+        unique: true
     },
     nombre_cliente: {
         type: String,
-        required: false,
+        required: true,
         trim: true
     },
     monto_pedido: {
         type: String,
-        required: false,
+        required: true,
         trim: true
     },
     medio_pago: {
@@ -36,18 +37,10 @@ const PedidoSchema = mongoose.Schema({
         required: false,
         trim: true
     },
-    num_documento: {
-        type: String,
-        required: false,
-        trim: true
-    },
-    fecha_pedido: {
-        type: String,
-        required: false,
-        trim: true
-    },
-    archivo: {
-        type: String
+    confirma_pago: {
+        type: Boolean,
+        default: false,
+
     },
     estado_pedido: {
         type: Boolean,

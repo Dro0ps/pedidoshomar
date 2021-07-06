@@ -22,7 +22,7 @@ exports.crearTarea = async (req, res) => {
             return res.status(404).json({msg: 'Pedido no encontrado'})
         }
 
-       /*  // Revisar si el pedido actual pertenece al usuario autenticado
+        /* // Revisar si el pedido actual pertenece al usuario autenticado
         if(existePedido.creador.toString() !== req.usuario.id ) {
             return res.status(401).json({msg: 'No Autorizado'});
         } */
@@ -67,7 +67,7 @@ exports.obtenerTareas = async (req, res) => {
         }
 }
 
-// Actualizar una tarea
+//Actualizar una tarea
 exports.actualizarTarea = async (req, res ) => {
     try {
         // Extraer el pedido y comprobar si existe
