@@ -23,6 +23,7 @@ app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/pedidos', require('./routes/pedidos'));
 app.use('/api/tareas', require('./routes/tareas'));
+app.use('/api/pagos', require('./routes/pagos'));
 
 
 // arrancar la app
