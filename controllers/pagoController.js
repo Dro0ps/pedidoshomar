@@ -64,26 +64,30 @@ exports.actualizarPago = async (req, res) => {
         medio_pago,
         banco,
         fecha_pago,
-        confirma_pago
+        confirmado_por,
+        confirma_pago,
+        fecha_confirmacion
     } = req.body;
 
 
     const nuevoPago = {};
     
-    if(num_pedido) {
+    if(num_pedido_pago) {
         nuevoPago.num_pedido_pago = num_pedido_pago;
         nuevoPago.nombre_cliente = nombre_cliente;
         nuevoPago.monto_pedido = monto_pedido;
         nuevoPago.medio_pago = medio_pago;
         nuevoPago.banco = banco;
         nuevoPago.fecha_pago = fecha_pago;
-        nuevoPago.tipo_documento = tipo_documento;
-        nuevoPago.confirma_pago = confirma_pago;
-
+        nuevoPago.fecha_confirmacion = fecha_confirmacion;
+        
     }
 
     if(confirma_pago){
         nuevoPago.confirma_pago = confirma_pago;
+    }
+    if(confirmado_por){
+        nuevoPago.confirmado_por = confirmado_por;
     }
 
     try {

@@ -24,15 +24,20 @@ const PagoSchema = mongoose.Schema({
     },
     banco: {
         type: String,
-        required: false,
+        required: true,
         trim: true
     },
     fecha_pago: {
         type: String,
+        required: true,
+        trim: true
+    },
+    confirmado_por: {
+        type: String,
         required: false,
         trim: true
     },
-    tipo_documento: {
+    fecha_confirmacion: {
         type: String,
         required: false,
         trim: true
