@@ -5,13 +5,45 @@ const auth = require('../middleware/auth');
 const { check } = require('express-validator');
 
 
+const AWS = require('aws-sdk');
+require('dotenv').config({ path: 'variables.env' });
+const multerS3 = require('multer-s3')
+const multer = require('multer');
+const shortid = require('shortid');
+
+
 // Crea pedidos
 // api/pedidos
+
+AWS.config.update({
+    secretAccessKey: process.env.AWS_SECRET_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    region: process.env.AWS_BUCKET_REGION
+});
+
+const s3 = new AWS.S3();
+
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: process.env.AWS_BUCKET_NAME,
+        key: function (req, file, cb) {
+            console.log(file);
+            const extension = file.mimetype.split('/')[1];
+            cb(null, `${shortid.generate()}.${extension}`); //use Date.now() for unique file keys
+        },
+
+    })
+});
+
+
+
 router.post('/', 
     auth,
     [
         check('num_pedido', 'El numero del pedido es obligatoio').not().isEmpty()
     ],
+    upload.array('archivo'),
     pedidoController.crearPedido
 );
 

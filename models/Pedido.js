@@ -51,6 +51,9 @@ const PedidoSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    archivo: {
+        type: String
+    },
     creador: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Usuario'

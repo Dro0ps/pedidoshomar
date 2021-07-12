@@ -26,6 +26,9 @@ exports.crearPedido = async (req, res) => {
         // Guardar el creador via JWT
         pedido.creador = req.usuario.id;
 
+        // Asigna el nombre del archivo y la ruta en base de datos
+        pedido.archivo = req.files[0].location;
+
         // guardamos el pedido
         pedido.save();
         res.json(pedido);/*  */
