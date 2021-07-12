@@ -40,9 +40,9 @@ const upload = multer({
 
 router.post('/', 
     auth,
-    [
+    /* [
         check('num_pedido', 'El numero del pedido es obligatoio').not().isEmpty()
-    ],
+    ], */
     upload.array('archivo'),
     pedidoController.crearPedido
 );

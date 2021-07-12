@@ -14,6 +14,7 @@ app.use(cors());
 
 // Habilitar express.json
 app.use( express.json({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // puerto de la app
 const port = process.env.PORT || 4000;
@@ -24,6 +25,10 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/pedidos', require('./routes/pedidos'));
 app.use('/api/tareas', require('./routes/tareas'));
 app.use('/api/pagos', require('./routes/pagos'));
+app.use(express.static('uploads'));
+
+// función middleware para servir archivos estáticos
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 
 // arrancar la app
