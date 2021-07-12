@@ -7,7 +7,7 @@ const PagoSchema = mongoose.Schema({
         trim: true,
         unique: true
     },
-    nombre_cliente: {
+    rut_depositante: {
         type: String,
         required: true,
         trim: true

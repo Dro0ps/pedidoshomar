@@ -59,7 +59,7 @@ exports.actualizarPago = async (req, res) => {
     // extraer la información del pago
     const { 
         num_pedido_pago,
-        nombre_cliente,
+        rut_depositante,
         monto_pedido,
         medio_pago,
         banco,
@@ -74,7 +74,7 @@ exports.actualizarPago = async (req, res) => {
     
     if(num_pedido_pago) {
         nuevoPago.num_pedido_pago = num_pedido_pago;
-        nuevoPago.nombre_cliente = nombre_cliente;
+        nuevoPago.rut_depositante = rut_depositante;
         nuevoPago.monto_pedido = monto_pedido;
         nuevoPago.medio_pago = medio_pago;
         nuevoPago.banco = banco;
