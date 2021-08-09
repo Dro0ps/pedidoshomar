@@ -69,6 +69,12 @@ exports.actualizarPedido = async (req, res) => {
         fecha_deposito,
         tipo_documento,
         confirma_pago,
+        num_documento,
+        confirmado_por,
+        fecha_confirmacion,
+        num_transaccion,
+        fecha_entrega,
+        lugar_entrega,
         estado_pedido,
         estado_despacho } = req.body;
 
@@ -84,6 +90,12 @@ exports.actualizarPedido = async (req, res) => {
         nuevoPedido.fecha_deposito = fecha_deposito;
         nuevoPedido.tipo_documento = tipo_documento;
         nuevoPedido.confirma_pago = confirma_pago;
+        nuevoPedido.num_documento = num_documento;
+        nuevoPedido.confirmado_por = confirmado_por;
+        nuevoPedido.fecha_confirmacion = fecha_confirmacion;
+        nuevoPedido.num_transaccion = num_transaccion;
+        nuevoPedido.lugar_entrega = lugar_entrega;
+        nuevoPedido.fecha_entrega = fecha_entrega;
         nuevoPedido.estado_pedido = estado_pedido;
         nuevoPedido.estado_despacho = estado_despacho;
     }

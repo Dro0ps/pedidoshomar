@@ -37,6 +37,36 @@ const PedidoSchema = mongoose.Schema({
         required: false,
         trim: true
     },
+    num_documento: {
+        type: String,
+        required: false,
+        trim: true
+    },
+    confirmado_por: {
+        type: String,
+        required: false,
+        trim: true
+    },
+    fecha_confirmacion: {
+        type: String,
+        required: false,
+        trim: true
+    },
+    num_transaccion: {
+        type: String,
+        required: false,
+        trim: true
+    },
+    fecha_entrega: {
+        type: String,
+        required: false,
+        trim: true
+    },
+    lugar_entrega: {
+        type: String,
+        required: false,
+        trim: true
+    },
     confirma_pago: {
         type: Boolean,
         default: false,

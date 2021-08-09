@@ -30,7 +30,8 @@ const upload = multer({
         key: function (req, file, cb) {
             console.log(file);
             const extension = file.mimetype.split('/')[1];
-            cb(null, `${shortid.generate()}.${extension}`); //use Date.now() for unique file keys
+            /* cb(null, `${shortid.generate()}.${extension}`); */ //use Date.now() for unique file keys
+            cb(null, `${shortid.generate()}${file.originalname}`); //use Date.now() for unique file keys
         },
 
     })
