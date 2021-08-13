@@ -67,6 +67,11 @@ const PedidoSchema = mongoose.Schema({
         required: false,
         trim: true
     },
+    bultos: {
+        type: String,
+        required: false,
+        trim: true
+    },
     confirma_pago: {
         type: Boolean,
         default: false,

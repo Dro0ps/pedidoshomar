@@ -75,6 +75,7 @@ exports.actualizarPedido = async (req, res) => {
         num_transaccion,
         fecha_entrega,
         lugar_entrega,
+        bultos,
         estado_pedido,
         estado_despacho } = req.body;
 
@@ -96,6 +97,7 @@ exports.actualizarPedido = async (req, res) => {
         nuevoPedido.num_transaccion = num_transaccion;
         nuevoPedido.lugar_entrega = lugar_entrega;
         nuevoPedido.fecha_entrega = fecha_entrega;
+        nuevoPedido.bultos = bultos;
         nuevoPedido.estado_pedido = estado_pedido;
         nuevoPedido.estado_despacho = estado_despacho;
     }
