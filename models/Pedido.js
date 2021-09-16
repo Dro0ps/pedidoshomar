@@ -65,7 +65,7 @@ const PedidoSchema = mongoose.Schema({
         type: String,
         required: false,
         trim: true,
-        default: "sin asignar"
+        
     },
     lugar_entrega: {
         type: String,
