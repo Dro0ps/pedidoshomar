@@ -40,37 +40,44 @@ const PedidoSchema = mongoose.Schema({
     num_documento: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
+        
     },
     confirmado_por: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
+        default: "sin asignar"
     },
     fecha_confirmacion: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
+        default: "sin asignar"
     },
     num_transaccion: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
+        default: "sin asignar"
     },
     fecha_entrega: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
+        default: "sin asignar"
     },
     lugar_entrega: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
+        default: "sin asignar"
     },
     bultos: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
+        default: "sin asignar"
     },
     confirma_pago: {
         type: Boolean,
@@ -87,6 +94,9 @@ const PedidoSchema = mongoose.Schema({
         default: false,
     },
     archivo: {
+        type: String
+    },
+    doc_archivo: {
         type: String
     },
     creador: {

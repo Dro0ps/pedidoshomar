@@ -26,7 +26,21 @@ const s3 = new AWS.S3();
 const upload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: process.env.AWS_BUCKET_NAME,
+        bucket: process.env.AWS_BUCKET_NAME_PEDIDO,
+        key: function (req, file, cb) {
+            console.log(file);
+            const extension = file.mimetype.split('/')[1];
+            /* cb(null, `${shortid.generate()}.${extension}`); */ //use Date.now() for unique file keys
+            cb(null, `${shortid.generate()}${file.originalname}`); //use Date.now() for unique file keys
+        },
+
+    })
+});
+
+const uploadFactura = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: process.env.AWS_BUCKET_NAME_FACTURA,
         key: function (req, file, cb) {
             console.log(file);
             const extension = file.mimetype.split('/')[1];
@@ -62,6 +76,17 @@ router.put('/:id',
     ],
     pedidoController.actualizarPedido
 );
+
+// Subir factura a pedido via ID
+router.put('/up/:id', 
+    auth,
+    /* [
+        check('num_pedido', 'El numero del pedido es obligatoio').not().isEmpty()
+    ], */
+    uploadFactura.array('doc_archivo'),
+    pedidoController.subirFactura
+);
+
 
 // Eliminar un Proyecto
 router.delete('/:id', 

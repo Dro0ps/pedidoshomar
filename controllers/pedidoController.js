@@ -137,6 +137,45 @@ exports.actualizarPedido = async (req, res) => {
     }
 }
 
+// Subir Facturas
+exports.subirFactura = async (req, res) => {
+
+    try {
+        // Revisar si hay errores
+        const errores = validationResult(req);
+        if( !errores.isEmpty() ) {
+            return res.status(400).json({errores: errores.array() })
+        }
+
+        // Revisar el ID 
+        let pedido = await Pedido.findById(req.params.id);
+
+        // Si el pedido existe o no
+        if(!pedido) {
+            return res.status(404).json({msg: 'Pedido no encontrado'})
+        }
+
+        pedido.doc_archivo = req.files[0].location;
+
+        //Construye un nuevo producto
+        let subeFactura = req.body;
+
+        
+        subeFactura.doc_archivo = pedido.doc_archivo;
+           
+        // Actualizar
+        pedido = await Pedido.findByIdAndUpdate({ _id: req.params.id }, subeFactura, { new: true });
+        console.log(pedido);
+        
+        res.json({pedido});
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error en el servidor');
+    }
+    
+} 
+
 // Elimina un pedido por su id
 exports.eliminarPedido = async (req, res ) => {
     try {
