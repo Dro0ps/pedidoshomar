@@ -9,7 +9,7 @@ exports.crearPedido = async (req, res) => {
         return res.status(400).json({errores: errores.array() })
     }
 
-    const { num_pedido, monto_pedido, fecha_deposito } = req.body;
+    const { num_pedido } = req.body;
 
     try {
 
@@ -40,6 +40,17 @@ exports.crearPedido = async (req, res) => {
 }
 
 // Obtiene todos los pedidos del usuario actual
+exports.obtenerPedidosUsuario = async (req, res) => {
+    try {
+        const pedidos = await Pedido.find({ creador: req.usuario.id }).sort({ creado: -1 });
+        res.json({ pedidos });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+} 
+
+// Obtiene todos los pedidos
 exports.obtenerPedidos = async (req, res) => {
     try {
         const pedidos = await Pedido.find(/* { creador: req.usuario.id } */).sort({ creado: -1 });
