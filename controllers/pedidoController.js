@@ -53,13 +53,18 @@ exports.obtenerPedidosUsuario = async (req, res) => {
 // Obtiene todos los pedidos
 exports.obtenerPedidos = async (req, res) => {
     try {
-        const pedidos = await Pedido.find(/* { creador: req.usuario.id } */).sort({ creado: -1 });
+        const pedidos = await Pedido.find(/* { creador: req.usuario.id } */).sort({ creado: -1 })
+        .populate("creador").populate({
+            path: 'creador',
+            model: 'Usuario'
+        });
         res.json({ pedidos });
     } catch (error) {
         console.log(error);
         res.status(500).send('Hubo un error');
     }
 } 
+
 
 // Actualiza un pedido
 exports.actualizarPedido = async (req, res) => {

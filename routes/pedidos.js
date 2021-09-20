@@ -64,15 +64,15 @@ router.post('/',
 
 // Obtener todos los pedidos
 router.get('/', 
-    auth,
+    /* auth, */
     pedidoController.obtenerPedidos
-)
+);
 
 // Obtener todos los pedidos
 router.get('/user', 
     auth,
     pedidoController.obtenerPedidosUsuario
-)
+);
 
 // Actualizar pedido via ID
 router.put('/:id', 
