@@ -39,10 +39,53 @@ exports.crearPedido = async (req, res) => {
     }
 }
 
+exports.crearPedidoBas = async (req, res) => {
+
+    // Revisar si hay errores
+    const errores = validationResult(req);
+    if( !errores.isEmpty() ) {
+        return res.status(400).json({errores: errores.array() })
+    }
+
+    const { num_pedido } = req.body;
+
+    try {
+
+        let checaNumero = await Pedido.findOne({num_pedido});
+
+        if(checaNumero) {
+            return res.status(400).json({ msg: 'El Pedido Ya Existe' });
+        }
+        
+
+        // Crear un nuevo pedido
+        pedido = new Pedido(req.body);
+
+        // Guardar el creador via JWT
+        pedido.creador = req.usuario.id;
+
+        // Asigna el nombre del archivo y la ruta en base de datos
+        pedido.archivo = "sin asignar"
+        pedido.doc_archivo = "sin asignar"
+
+        // guardamos el pedido
+        pedido.save();
+        res.json(pedido);/*  */
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Hubo un Error');
+    }
+}
+
 // Obtiene todos los pedidos del usuario actual
 exports.obtenerPedidosUsuario = async (req, res) => {
     try {
-        const pedidos = await Pedido.find({ creador: req.usuario.id }).sort({ creado: -1 });
+        const pedidos = await Pedido.find({ creador: req.usuario.id }).sort({ creado: -1 })
+        .populate("creador").populate({
+            path: 'creador',
+            model: 'Usuario'
+        });
         res.json({ pedidos });
     } catch (error) {
         console.log(error);

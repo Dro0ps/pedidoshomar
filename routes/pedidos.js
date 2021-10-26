@@ -62,6 +62,14 @@ router.post('/',
     pedidoController.crearPedido
 );
 
+router.post('/bas', 
+    auth,
+    /* [
+        check('num_pedido', 'El numero del pedido es obligatoio').not().isEmpty()
+    ], */
+    pedidoController.crearPedidoBas
+);
+
 // Obtener todos los pedidos
 router.get('/', 
     /* auth, */
